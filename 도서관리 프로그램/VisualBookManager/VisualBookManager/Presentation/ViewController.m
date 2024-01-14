@@ -47,10 +47,27 @@
     
     resultTextView.editable = false;
     
+    nameTextField.delegate = self;
+    genreTextField.delegate = self;
+    authorTextField.delegate = self;
+    
+    [nameTextField setReturnKeyType: UIReturnKeyDone];
+    [nameTextField setClearButtonMode: UITextFieldViewModeWhileEditing];
+    [genreTextField setReturnKeyType: UIReturnKeyDone];
+    [genreTextField setClearButtonMode: UITextFieldViewModeWhileEditing];
+    [authorTextField setReturnKeyType: UIReturnKeyDone];
+    [authorTextField setClearButtonMode: UITextFieldViewModeWhileEditing];
+    
     [self updateBookCount];
 }
 
--(void)updateBookCount {
+// MARK: UI Responder에 있는 Method
+/// Event들이 받을 수 있는것만 받고 받을 수 없는 것들은 아래로 흘린다. 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing: YES];
+}
+
+- (void)updateBookCount {
     NSMutableString *bookCountText = [[NSMutableString alloc]init];
     
     [bookCountText appendString: @"도서 개수: "];
@@ -59,13 +76,15 @@
     countLabel.text = bookCountText;
 }
 
--(IBAction)showAllBookAction:(id)sender {
+- (IBAction)showAllBookAction:(id)sender {
     // 둘 다 가능
 //    resultTextView.text = [myBook showAllBook];
     [resultTextView setText: [myBook showAllBook]];
+    
+    [self.view endEditing: YES];
 }
 
--(IBAction)addBookAction:(id)sender {
+- (IBAction)addBookAction:(id)sender {
     if ([myBook findBook:nameTextField.text]) {
         resultTextView.text = @"중복 등록입니다.";
     } else {
@@ -78,10 +97,11 @@
         resultTextView.text = @"책이 추가되었습니다.";
         
         [self updateBookCount];
+        [self.view endEditing: YES];
     }
 }
 
--(IBAction)findBookAction:(id)sender {
+- (IBAction)findBookAction:(id)sender {
     Book * bookTemp = [myBook findBook:nameTextField.text];
     if (bookTemp) {
         NSMutableString *strString = [[NSMutableString alloc]init];
@@ -100,12 +120,15 @@
         [strString appendString: @"-----------"];
         
         resultTextView.text = strString;
+        [self.view endEditing: YES];
     } else {
         resultTextView.text = @"검색된 책이 없습니다.";
     }
 }
 
--(IBAction)removeBookAction:(id)sender {
+- (IBAction)removeBookAction:(id)sender {
+    [self.view endEditing: YES];
+
     Book *bookTemp = [myBook removeBook:nameTextField.text];
     
     if (bookTemp) {
@@ -134,6 +157,12 @@
     } else {
         resultTextView.text = @"제거할 책이 존재하지 않습니다.";
     }
+}
+
+// MARK: UI Responder
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

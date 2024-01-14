@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @class BookManager;
-@interface ViewController : UIViewController{
+@interface ViewController : UIViewController <UITextFieldDelegate> {
     BookManager *myBook;
 }
 

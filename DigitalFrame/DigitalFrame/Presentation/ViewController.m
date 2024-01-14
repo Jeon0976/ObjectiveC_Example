@@ -38,38 +38,10 @@
     
     [self.view addConstraints: @[
         // imageView
-        [NSLayoutConstraint constraintWithItem:imageView
-                                     attribute:NSLayoutAttributeTop 
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.view.safeAreaLayoutGuide
-                                     attribute:NSLayoutAttributeTop
-                                    multiplier:1.0
-                                      constant:20.0
-        ],
-        [NSLayoutConstraint constraintWithItem:imageView
-                                     attribute:NSLayoutAttributeLeft
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.view.safeAreaLayoutGuide
-                                     attribute:NSLayoutAttributeLeft
-                                    multiplier:1.0
-                                      constant:16.0
-        ],
-        [NSLayoutConstraint constraintWithItem:imageView
-                                     attribute: NSLayoutAttributeRight
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.view.safeAreaLayoutGuide
-                                     attribute:NSLayoutAttributeRight 
-                                    multiplier:1.0
-                                      constant:-16.0
-        ],
-        [NSLayoutConstraint constraintWithItem:imageView
-                                     attribute:NSLayoutAttributeHeight
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:nil
-                                     attribute:NSLayoutAttributeNotAnAttribute
-                                    multiplier:1.0
-                                      constant:450
-        ],
+        [self.imageView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:0],
+        [self.imageView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:2],
+        [self.imageView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-2],
+        [self.imageView.heightAnchor constraintEqualToConstant:450],
         
         // slider
         [NSLayoutConstraint constraintWithItem:slider
