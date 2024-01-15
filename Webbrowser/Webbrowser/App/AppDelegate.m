@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  DigitalFrame
+//  Webbrowser
 //
-//  Created by 전성훈 on 2024/01/12.
+//  Created by 전성훈 on 2024/01/15.
 //
 
 #import "AppDelegate.h"
@@ -15,9 +15,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    // Override point for customization after application launch.
     return YES;
 }
+
 
 #pragma mark - UISceneSession lifecycle
 

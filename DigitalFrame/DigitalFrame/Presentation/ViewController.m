@@ -35,7 +35,7 @@
         view.translatesAutoresizingMaskIntoConstraints = NO;
         [self.view addSubview: view];
     }
-    
+
     [self.view addConstraints: @[
         // imageView
         [self.imageView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:0],
@@ -125,7 +125,7 @@
 
 -(void)setupAttribute {
     self.view.backgroundColor = [UIColor lightGrayColor];
-    
+
     self.imageArray = [[NSArray alloc]initWithObjects:
                        [UIImage imageNamed:@"1"],
                        [UIImage imageNamed:@"2"],
