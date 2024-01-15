@@ -15,10 +15,6 @@
 - (void)setToolBarAttribute;
 
 - (void)tappedFavoritesSegmentedControl:(UISegmentedControl *)sender;
-- (void)goBack:(UIButton *)sender;
-- (void)goForward:(UIButton *)sender;
-- (void)refresh:(UIButton *)sender;
-- (void)stopLoading:(UIButton *)sender;
 
 @end
 
